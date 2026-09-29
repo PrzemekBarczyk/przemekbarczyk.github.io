@@ -1,346 +1,634 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jan Kowalski - Portfolio</title>
+    <title>C# .NET Software Developer - Portfolio</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
                     colors: {
                         brand: {
-                            50: '#f0f7ff',
-                            100: '#e0effe',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
+                            50: '#ecfeff',
+                            100: '#cffaff',
+                            400: '#22d3ee',
+                            500: '#06b6d4',
+                            600: '#0891b2',
+                            900: '#164e63',
+                        },
+                        accent: {
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                        },
+                        dark: {
+                            bg: '#0b0f19',
+                            card: '#111827',
+                            border: '#1f2937',
+                            hover: '#374151'
                         }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
                     }
                 }
             }
         }
     </script>
     <style>
-        html {
-            scroll-behavior: smooth;
+        body {
+            background-color: #0b0f19;
+            color: #f3f4f6;
+            font-family: 'Inter', sans-serif;
         }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.8);
+        .glow-effect {
+            box-shadow: 0 0 25px -5px rgba(6, 182, 212, 0.15);
+        }
+        .glow-effect:hover {
+            box-shadow: 0 0 30px 0px rgba(6, 182, 212, 0.3);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #22d3ee 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #06b6d4 0%, #4f46e5 100%);
+        }
+        /* Glassmorphism Effect */
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.7);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(229, 231, 235, 0.8);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white">
+<body class="bg-dark-bg text-gray-200 antialiased selection:bg-brand-500 selection:text-white">
 
-    <!-- Header / Nawigacja -->
-    <header class="sticky top-0 z-50 glass-card transition-all duration-300">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#hero" class="text-xl font-bold tracking-tight text-slate-900 hover:text-brand-600 transition-colors">
-                Jan<span class="text-brand-600">.dev</span>
-            </a>
-            
-            <!-- Nawigacja Desktop -->
-            <nav class="hidden md:flex space-x-8 text-sm font-medium">
-                <a href="#about" class="text-slate-600 hover:text-brand-600 transition-colors">O mnie</a>
-                <a href="#projects" class="text-slate-600 hover:text-brand-600 transition-colors">Projekty</a>
-                <a href="#skills" class="text-slate-600 hover:text-brand-600 transition-colors">Umiejętności</a>
-                <a href="#contact" class="text-slate-600 hover:text-brand-600 transition-colors">Kontakt</a>
-            </nav>
-
-            <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-brand-600 rounded-lg hover:bg-brand-700 transition-all shadow-sm hover:shadow">
-                Napisz do mnie
-            </a>
-        </div>
-    </header>
-
-    <main>
-        <!-- Hero & O mnie -->
-        <section id="hero" class="py-20 md:py-32 max-w-6xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-                <div class="md:col-span-7 space-y-6">
-                    <div class="inline-block px-3 py-1 rounded-full bg-brand-50 text-brand-600 text-xs font-semibold tracking-wide uppercase">
-                        Frontend Developer
-                    </div>
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
-                        Cześć, jestem <span class="text-brand-600">Jan Kowalski</span>
-                    </h1>
-                    <p class="text-lg text-slate-600 leading-relaxed max-w-2xl">
-                        Tworzę nowoczesne, responsywne i przyjazne dla użytkownika aplikacje internetowe. Pasjonuję się czystym kodem, estetycznym designem i optymalizacją wydajności.
-                    </p>
-                    <div class="pt-4 flex flex-wrap gap-4">
-                        <a href="#projects" class="px-6 py-3 bg-brand-600 text-white font-medium rounded-lg hover:bg-brand-700 transition-all shadow-md hover:shadow-lg">
-                            Zobacz projekty
-                        </a>
-                        <a href="#contact" class="px-6 py-3 bg-white text-slate-700 font-medium rounded-lg border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-all">
-                            Skontaktuj się
-                        </a>
-                    </div>
-                </div>
-                <div class="md:col-span-5 flex justify-center">
-                    <div class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
-                        <img src="https://placehold.co/600x600/2563eb/ffffff?text=JK" alt="Jan Kowalski" class="w-full h-full object-cover">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sekcja O mnie (Krótkie tło) -->
-        <section id="about" class="py-16 bg-white border-y border-slate-100">
-            <div class="max-w-6xl mx-auto px-6">
-                <div class="max-w-3xl mx-auto text-center space-y-4">
-                    <h2 class="text-3xl font-bold text-slate-900">O mnie</h2>
-                    <p class="text-slate-600 leading-relaxed">
-                        Posiadam ponad 3-letnie doświadczenie w projektowaniu oraz wdrażaniu stron i aplikacji webowych. 
-                        Na co dzień pracuję z najnowszymi technologiami front-endowymi, dbając o dostępność (Accessibility) oraz responsywność urządzeń mobilnych.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sekcja Projektów -->
-        <section id="projects" class="py-20 max-w-6xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
-                <div>
-                    <h2 class="text-3xl font-bold text-slate-900">Wybrane Projekty</h2>
-                    <p class="text-slate-500 mt-2">Oto niektóre z moich ostatnich prac</p>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Karta Projektu 1 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col group">
-                    <div class="relative overflow-hidden aspect-video bg-slate-100">
-                        <img src="https://placehold.co/600x400/e2e8f0/475569?text=E-commerce+App" alt="E-Commerce App" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition-colors">Platforma E-Commerce</h3>
-                            <p class="text-slate-600 text-sm mb-4 leading-relaxed">
-                                Sklep internetowy z koszykiem w czasie rzeczywistym, integracją płatności oraz panelem klienta.
-                            </p>
-                        </div>
-                        <div>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">HTML/CSS</span>
-                                <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">JavaScript</span>
-                                <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">Tailwind</span>
-                            </div>
-                            <a href="#" class="inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700">
-                                Zobacz kod / Live <i class="fa-solid font-xs fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Karta Projektu 2 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col group">
-                    <div class="relative overflow-hidden aspect-video bg-slate-100">
-                        <img src="https://placehold.co/600x400/e2e8f0/475569?text=Dashboard+UI" alt="Dashboard UI" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition-colors">Panel Analityczny</h3>
-                            <p class="text-slate-600 text-sm mb-4 leading-relaxed">
-                                Aplikacja do wizualizacji danych statystycznych z wykresami w czasie rzeczywistym i trybem ciemnym.
-                            </p>
-                        </div>
-                        <div>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">React</span>
-                                <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">Chart.js</span>
-                                <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">Tailwind</span>
-                            </div>
-                            <a href="#" class="inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700">
-                                Zobacz kod / Live <i class="fa-solid font-xs fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Karta Projektu 3 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col group">
-                    <div class="relative overflow-hidden aspect-video bg-slate-100">
-                        <img src="https://placehold.co/600x400/e2e8f0/475569?text=Task+Manager" alt="Task Manager" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition-colors">Menedżer Zadań</h3>
-                            <p class="text-slate-600 text-sm mb-4 leading-relaxed">
-                                Prosta aplikacja Kanban do zarządzania projektami osobistymi z obsługą metodologii Drag & Drop.
-                            </p>
-                        </div>
-                        <div>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">JavaScript</span>
-                                <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">LocalStorage</span>
-                                <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-medium rounded-md">CSS3</span>
-                            </div>
-                            <a href="#" class="inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700">
-                                Zobacz kod / Live <i class="fa-solid font-xs fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sekcja Umiejętności -->
-        <section id="skills" class="py-20 bg-white border-y border-slate-100">
-            <div class="max-w-6xl mx-auto px-6">
-                <div class="text-center max-w-2xl mx-auto mb-16">
-                    <h2 class="text-3xl font-bold text-slate-900">Umiejętności</h2>
-                    <p class="text-slate-500 mt-2">Technologie i narzędzia, z którymi pracuję na co dzień</p>
-                </div>
-
-                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
-                    <div class="p-6 bg-slate-50 rounded-xl text-center hover:bg-brand-50 hover:text-brand-600 transition-colors border border-slate-100 flex flex-col items-center">
-                        <i class="fa-brands fa-html5 text-4xl mb-3 text-orange-500"></i>
-                        <span class="font-semibold text-sm text-slate-800">HTML5</span>
-                    </div>
-                    <div class="p-6 bg-slate-50 rounded-xl text-center hover:bg-brand-50 hover:text-brand-600 transition-colors border border-slate-100 flex flex-col items-center">
-                        <i class="fa-brands fa-css3-alt text-4xl mb-3 text-blue-500"></i>
-                        <span class="font-semibold text-sm text-slate-800">CSS3 / Tailwind</span>
-                    </div>
-                    <div class="p-6 bg-slate-50 rounded-xl text-center hover:bg-brand-50 hover:text-brand-600 transition-colors border border-slate-100 flex flex-col items-center">
-                        <i class="fa-brands fa-js text-4xl mb-3 text-yellow-500"></i>
-                        <span class="font-semibold text-sm text-slate-800">JavaScript</span>
-                    </div>
-                    <div class="p-6 bg-slate-50 rounded-xl text-center hover:bg-brand-50 hover:text-brand-600 transition-colors border border-slate-100 flex flex-col items-center">
-                        <i class="fa-brands fa-react text-4xl mb-3 text-cyan-400"></i>
-                        <span class="font-semibold text-sm text-slate-800">React</span>
-                    </div>
-                    <div class="p-6 bg-slate-50 rounded-xl text-center hover:bg-brand-50 hover:text-brand-600 transition-colors border border-slate-100 flex flex-col items-center">
-                        <i class="fa-brands fa-git-alt text-4xl mb-3 text-red-500"></i>
-                        <span class="font-semibold text-sm text-slate-800">Git / GitHub</span>
-                    </div>
-                    <div class="p-6 bg-slate-50 rounded-xl text-center hover:bg-brand-50 hover:text-brand-600 transition-colors border border-slate-100 flex flex-col items-center">
-                        <i class="fa-brands fa-figma text-4xl mb-3 text-purple-500"></i>
-                        <span class="font-semibold text-sm text-slate-800">Figma</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sekcja Kontakt -->
-        <section id="contact" class="py-20 max-w-6xl mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <a href="#hero" class="text-xl font-bold font-mono tracking-tight text-white flex items-center gap-2">
+                    <span class="text-brand-400">&lt;Dev/&gt;</span>
+                    <span id="nav-name" class="text-gray-100 font-sans">Jan Kowalski</span>
+                </a>
                 
-                <!-- Informacje kontaktowe i Social Media -->
-                <div class="lg:col-span-5 space-y-6">
-                    <div>
-                        <h2 class="text-3xl font-bold text-slate-900">Skontaktuj się</h2>
-                        <p class="text-slate-600 mt-2">
-                            Chcesz omówić projekt lub po prostu porozmawiać? Napisz do mnie wiadomość.
-                        </p>
-                    </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 text-sm font-medium">
+                    <a href="#o-mnie" class="hover:text-brand-400 transition-colors py-2">O mnie</a>
+                    <a href="#kompetencje" class="hover:text-brand-400 transition-colors py-2">Kompetencje</a>
+                    <a href="#doswiadczenie" class="hover:text-brand-400 transition-colors py-2">Doświadczenie</a>
+                    <a href="#umiejetnosci" class="hover:text-brand-400 transition-colors py-2">Umiejętności</a>
+                    <a href="#dlaczego-ja" class="hover:text-brand-400 transition-colors py-2">Dlaczego ja</a>
+                    <a href="#kontakt" class="bg-brand-500 hover:bg-brand-600 text-white px-4 py-2 rounded-lg transition-all shadow-md font-semibold">Kontakt</a>
+                </div>
 
-                    <div class="space-y-4 pt-4">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 rounded-lg bg-brand-50 flex items-center justify-center text-brand-600">
-                                <i class="fa-solid fa-envelope text-lg"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs text-slate-500 font-medium uppercase">Email</p>
-                                <a href="mailto:jan.kowalski@example.com" class="text-slate-900 font-medium hover:text-brand-600">jan.kowalski@example.com</a>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white p-2" aria-label="Menu">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-b border-gray-800 px-4 pt-2 pb-4 space-y-2 text-center">
+            <a href="#o-mnie" class="block py-2 hover:text-brand-400 border-b border-gray-800/50">O mnie</a>
+            <a href="#kompetencje" class="block py-2 hover:text-brand-400 border-b border-gray-800/50">Kompetencje</a>
+            <a href="#doswiadczenie" class="block py-2 hover:text-brand-400 border-b border-gray-800/50">Doświadczenie</a>
+            <a href="#umiejetnosci" class="block py-2 hover:text-brand-400 border-b border-gray-800/50">Umiejętności</a>
+            <a href="#dlaczego-ja" class="block py-2 hover:text-brand-400 border-b border-gray-800/50">Dlaczego ja</a>
+            <a href="#kontakt" class="block py-2 text-brand-400 font-semibold">Kontakt</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center justify-center pt-20 pb-12 px-4 sm:px-6 relative overflow-hidden">
+        <!-- Background Gradient Bubbles -->
+        <div class="absolute top-1/4 left-10 w-72 h-72 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-1/4 right-10 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto text-center z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-xs sm:text-sm font-mono mb-6">
+                <span class="w-2 h-2 rounded-full bg-brand-400 animate-pulse"></span> Otwarty na nowe wyzwania programistyczne
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+                <span id="hero-name" class="block text-3xl sm:text-5xl font-extrabold text-white mb-2 tracking-normal">Jan Kowalski</span>
+                <span class="gradient-text">C# / .NET Developer</span>
+            </h1>
+
+            <p class="text-lg sm:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Specjalizuję się w tworzeniu stabilnego oprogramowania, integracji systemów oraz projektowaniu dedykowanej logiki biznesowej. Łączę znajomość ekosystemu .NET z architekturą baz danych MS SQL.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#kontakt" class="w-full sm:w-auto px-8 py-3.5 rounded-xl gradient-bg text-white font-semibold hover:opacity-90 transition-all shadow-lg shadow-brand-500/20 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-paper-plane"></i> Skontaktuj się ze mną
+                </a>
+                <a href="#kompetencje" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-dark-card border border-gray-700 hover:border-gray-600 text-gray-300 hover:text-white font-medium transition-all flex items-center justify-center gap-2">
+                    Poznaj moje kompetencje <i class="fa-solid fa-arrow-down text-xs"></i>
+                </a>
+            </div>
+
+            <!-- Social Links -->
+            <div class="flex justify-center gap-6 mt-12 text-gray-400 text-xl">
+                <a href="#" id="link-github" target="_blank" class="hover:text-brand-400 transition-colors" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="#" id="link-linkedin" target="_blank" class="hover:text-brand-400 transition-colors" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="mailto:email@example.com" id="link-email-hero" class="hover:text-brand-400 transition-colors" title="E-mail"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcja: O Mnie -->
+    <section id="o-mnie" class="py-20 bg-dark-bg border-t border-gray-800/60">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <div class="md:col-span-5 flex justify-center">
+                    <div class="relative">
+                        <div class="w-48 h-48 sm:w-64 sm:h-64 rounded-2xl bg-gradient-to-tr from-brand-500 to-accent-500 p-1 glow-effect">
+                            <div class="w-full h-full bg-dark-card rounded-2xl flex items-center justify-center overflow-hidden">
+                                <i class="fa-solid fa-code text-6xl text-brand-400"></i>
                             </div>
                         </div>
-
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 rounded-lg bg-brand-50 flex items-center justify-center text-brand-600">
-                                <i class="fa-solid fa-location-dot text-lg"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs text-slate-500 font-medium uppercase">Lokalizacja</p>
-                                <p class="text-slate-900 font-medium">Warszawa, Polska</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Social Media -->
-                    <div class="pt-6">
-                        <p class="text-sm font-semibold text-slate-900 mb-4">Znajdziesz mnie na:</p>
-                        <div class="flex space-x-4">
-                            <a href="#" class="w-10 h-10 rounded-full bg-slate-100 hover:bg-brand-600 hover:text-white flex items-center justify-center text-slate-600 transition-colors">
-                                <i class="fa-brands fa-github text-lg"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 rounded-full bg-slate-100 hover:bg-brand-600 hover:text-white flex items-center justify-center text-slate-600 transition-colors">
-                                <i class="fa-brands fa-linkedin-in text-lg"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 rounded-full bg-slate-100 hover:bg-brand-600 hover:text-white flex items-center justify-center text-slate-600 transition-colors">
-                                <i class="fa-brands fa-x-twitter text-lg"></i>
-                            </a>
+                        <div class="absolute -bottom-4 -right-4 bg-dark-card border border-gray-700 px-4 py-2 rounded-xl text-xs font-mono text-gray-300 shadow-xl">
+                            <i class="fa-solid fa-terminal text-brand-400 mr-2"></i>Clean Code & Performance
                         </div>
                     </div>
                 </div>
 
-                <!-- Formularz kontaktowy -->
-                <div class="lg:col-span-7 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm">
-                    <form id="contact-form" class="space-y-6">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-slate-700 mb-2">Imię i nazwisko</label>
-                                <input type="text" id="name" required placeholder="Jan Kowalski" class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent text-sm transition-all">
+                <div class="md:col-span-7 space-y-4">
+                    <h2 class="text-xs font-mono text-brand-400 uppercase tracking-widest">O mnie</h2>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white">Tworzę solidne rozwiązania C# gotowe na wyzwania biznesowe</h3>
+                    
+                    <p class="text-gray-400 leading-relaxed">
+                        Jestem programistą z silnym nastawieniem na dostarczanie wartościowego, czystego i skróconego do minium awaryjności kodu w języku C#. Posiadam doświadczenie w budowaniu wtyczek, rozszerzeń aplikacji oraz zaawansowanych integracji opartych o interfejsy API i bazy danych.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed">
+                        Na co dzień pracuję nad rozwiązaniami opartymi o technologie .NET oraz systemy klasy ERP (Comarch ERP XL), co dało mi unikalne wyczucie procesów biznesowych (handlowych, magazynowych, księgowych) oraz umiejętność zoptymalizowanej pracy z dużą ilością danych na poziomie MS SQL Server.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 pt-4 text-sm font-medium">
+                        <div class="flex items-center gap-3 text-gray-300">
+                            <i class="fa-solid fa-check text-brand-400"></i> Architektura & REST API
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-300">
+                            <i class="fa-solid fa-check text-brand-400"></i> Optymalizacja T-SQL
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-300">
+                            <i class="fa-solid fa-check text-brand-400"></i> Tworzenie Wtyczek i Modułów
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-300">
+                            <i class="fa-solid fa-check text-brand-400"></i> Integracje Wielosystemowe
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcja: Główne Kompetencje / Obszary Doświadczenia -->
+    <section id="kompetencje" class="py-20 bg-dark-card/50 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono text-brand-400 uppercase tracking-widest mb-2">Główne Kompetencje</h2>
+                <h3 class="text-3xl font-bold text-white">Czym zajmuję się w inżynierii oprogramowania</h3>
+                <p class="text-gray-400 mt-4">Uniwersalne umiejętności programistyczne, które przekładam na sukces projektów niezależnie od branży.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Card 1 -->
+                <div class="bg-dark-card p-6 rounded-2xl border border-gray-800 hover:border-brand-500/50 transition-all glow-effect group">
+                    <div class="w-12 h-12 bg-brand-500/10 rounded-xl flex items-center justify-center text-brand-400 text-xl mb-6 group-hover:bg-brand-500 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-puzzle-piece"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Tworzenie Wtyczek i Rozszerzeń</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Projektowanie i implementacja autorskich modułów, wtyczek i aplikacji narzędziowych rozszerzających standardowe funkcjonalności systemów desktopowych i webowych.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-dark-card p-6 rounded-2xl border border-gray-800 hover:border-brand-500/50 transition-all glow-effect group">
+                    <div class="w-12 h-12 bg-accent-500/10 rounded-xl flex items-center justify-center text-accent-500 text-xl mb-6 group-hover:bg-accent-500 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Integracje Systemowe & API</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Budowa niezawodnych usług integracyjnych łączących rozproszone aplikacje (REST API, Web API, XML/JSON). Obsługa pełnego cyklu wymiany danych i synchronizacji.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-dark-card p-6 rounded-2xl border border-gray-800 hover:border-brand-500/50 transition-all glow-effect group">
+                    <div class="w-12 h-12 bg-brand-500/10 rounded-xl flex items-center justify-center text-brand-400 text-xl mb-6 group-hover:bg-brand-500 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Bazy Danych & Optymalizacja T-SQL</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Tworzenie zaawansowanych procedur składowanych, widoków oraz wyzwalaczy na MS SQL Server. Analiza wydajności zapytań, optymalizacja indeksów oraz spójności danych.
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-dark-card p-6 rounded-2xl border border-gray-800 hover:border-brand-500/50 transition-all glow-effect group">
+                    <div class="w-12 h-12 bg-accent-500/10 rounded-xl flex items-center justify-center text-accent-500 text-xl mb-6 group-hover:bg-accent-500 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Raportowanie i Analiza Danych</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Projektowanie złożonych raportów biznesowych i analitycznych przy użyciu narzędzi takich jak Crystal Reports oraz Stimulsoft, zasilanych wydajnymi zapytaniami SQL.
+                    </p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-dark-card p-6 rounded-2xl border border-gray-800 hover:border-brand-500/50 transition-all glow-effect group">
+                    <div class="w-12 h-12 bg-brand-500/10 rounded-xl flex items-center justify-center text-brand-400 text-xl mb-6 group-hover:bg-brand-500 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Logika Biznesowa & Procesy</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Przekładanie zawiłych wymagań biznesowych na czytelny i łatwy w utrzymaniu kod. Doświadczenie w modelowaniu procesów operacyjnych i handlowych.
+                    </p>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="bg-dark-card p-6 rounded-2xl border border-gray-800 hover:border-brand-500/50 transition-all glow-effect group">
+                    <div class="w-12 h-12 bg-accent-500/10 rounded-xl flex items-center justify-center text-accent-500 text-xl mb-6 group-hover:bg-accent-500 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-bug-slash"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Utrzymanie i Refaktoryzacja</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Diagnozowanie błędów w zastanym kodzie, optymalizacja architektoniczna istniejących modułów oraz dbanie o stabilność działania systemów produkcyjnych.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcja: Doświadczenie Zawodowe -->
+    <section id="doswiadczenie" class="py-20 bg-dark-bg border-t border-gray-800">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono text-brand-400 uppercase tracking-widest mb-2">Ścieżka Zawodowa</h2>
+                <h3 class="text-3xl font-bold text-white">Doświadczenie Komercyjne</h3>
+            </div>
+
+            <div class="space-y-8 relative before:absolute before:inset-0 before:left-3 md:before:left-1/2 before:-ml-px before:w-0.5 before:bg-gray-800">
+                
+                <!-- Timeline Item 1 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                    <!-- Icon -->
+                    <div class="flex items-center justify-center w-7 h-7 rounded-full bg-brand-500 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        <i class="fa-solid fa-briefcase text-xs"></i>
+                    </div>
+                    
+                    <!-- Content Card -->
+                    <div class="w-[calc(100%-2.5rem)] md:w-[calc(50%-2.5rem)] bg-dark-card p-6 rounded-2xl border border-gray-800 shadow-xl">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-bold text-white text-lg">C# / .NET Software Developer</h4>
+                            <span class="text-xs font-mono px-2.5 py-1 bg-brand-500/10 text-brand-400 rounded-full border border-brand-500/20">Obecnie</span>
+                        </div>
+                        <p class="text-sm font-medium text-gray-400 mb-4">Partner Comarch / Sektor Rozwiązań Dla Biznesu</p>
+                        
+                        <ul class="text-sm text-gray-400 space-y-2 list-disc list-inside leading-relaxed">
+                            <li>Projektowanie i tworzenie rozszerzeń w C# / .NET dla systemów klasy ERP (Comarch ERP XL).</li>
+                            <li>Budowa i utrzymanie usług integracyjnych łączących zewnętrzne systemy e-commerce i B2B poprzez API (REST / JSON / XML).</li>
+                            <li>Tworzenie zaawansowanych procedur, funkcji i wyzwalaczy w języku T-SQL (MS SQL Server).</li>
+                            <li>Optymalizacja wydajnościowa zapytań SQL oraz przetwarzania danych.</li>
+                            <li>Bezpośrednia praca z klientem biznesowym – analiza potrzeb i przekładanie ich na architekturę oprogramowania.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcja: Umiejętności Techniczne -->
+    <section id="umiejetnosci" class="py-20 bg-dark-card/50 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono text-brand-400 uppercase tracking-widest mb-2">Stack Technologiczny</h2>
+                <h3 class="text-3xl font-bold text-white">Umiejętności Techniczne</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Category 1: C# & .NET -->
+                <div class="bg-dark-card p-6 rounded-2xl border border-gray-800">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i class="fa-brands fa-microsoft text-2xl text-brand-400"></i>
+                        <h4 class="font-bold text-white">C# / .NET</h4>
+                    </div>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li class="flex items-center justify-between bg-dark-bg p-2.5 rounded-lg border border-gray-800/80">
+                            <span>C# / .NET Core / Framework</span>
+                            <i class="fa-solid fa-check text-xs text-brand-400"></i>
+                        </li>
+                        <li class="flex items-center justify-between bg-dark-bg p-2.5 rounded-lg border border-gray-800/80">
+                            <span>LINQ</span>
+                            <i class="fa-solid fa-check text-xs text-brand-400"></i>
+                        </li>
+                        <li class="flex items-center justify-between bg-dark-bg p-2.5 rounded-lg border border-gray-800/80">
+                            <span>Entity Framework / Dapper</span>
+                            <i class="fa-solid fa-check text-xs text-brand-400"></i>
+                        </li>
+                        <li class="flex items-center justify-between bg-dark-bg p-2.5 rounded-lg border border-gray-800/80">
+                            <span>WCF / Web API</span>
+                            <i class="fa-solid fa-check text-xs text-brand-400"></i>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Category 2: Bazy Danych -->
+                <div class="bg-dark-card p-6 rounded-2xl border border-gray-800">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i class="fa-solid fa-database text-2xl text-accent-500"></i>
+                        <h4 class="font-bold text-white">Bazy Danych</h4>
+                    </div>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li class="flex items-center justify-between bg-dark-bg p-2.5 rounded-lg border border-gray-800/80">
+                            <span>MS SQL Server</span>
+                            <i class="fa-solid fa-check text-xs text-brand-400"></i>
+                        </li>
+                        <li class="flex items-center justify-between bg-dark-bg p-2.5 rounded-lg border border-gray-800/80">
+                            <span>T-SQL (Procedury, Triggery)</span>
+                            <i class="fa-solid fa-check text-xs text-brand-400"></i>
+                        </li>
+                        <li class="flex items-center justify-between bg-dark-bg p-2.5 rounded-lg border border-gray-800/80">
+                            <span>Optymalizacja Zapytań</span>
+                            <i class="fa-solid fa-check text-xs text-brand-400"></i>
+                        </li>
+                        <li class="flex items-center justify-between bg-dark-bg p-2.5 rounded-lg border border-gray-800/80">
+                            <span>Modelowanie Relacyjne</span>
+                            <i class="fa-solid fa-check text-xs text-brand-400"></i>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Category 3: Integracje i Architektura -->
+                <div class="bg-dark-card p-6 rounded-2xl border border-gray-800">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i class="fa-solid fa-sitemap text-2xl text-brand-400"></i>
+                        <h4 class="font-bold text-white">Integracja & Architektura</h4>
+                    </div>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li class="flex items-center justify-between bg-dark-bg p-2.5 rounded-lg border border-gray-800/80">
+                            <span>REST API / Web Services</span>
+                            <i class="fa-solid fa-check text-xs text-brand-400"></i>
+                        </li>
+                        <li class="flex items-center justify-between bg-dark-bg p-2.5 rounded-lg border border-gray-800/80">
+                            <span>JSON / XML Serialization</span>
+                            <i class="fa-solid fa-check text-xs text-brand-400"></i>
+                        </li>
+                        <li class="flex items-center justify-between bg-dark-bg p-2.5 rounded-lg border border-gray-800/80">
+                            <span>Wzorce Projektowe</span>
+                            <i class="fa-solid fa-check text-xs text-brand-400"></i>
+                        </li>
+                        <li class="flex items-center justify-between bg-dark-bg p-2.5 rounded-lg border border-gray-800/80">
+                            <span>Architektura Wtyczkowa</span>
+                            <i class="fa-solid fa-check text-xs text-brand-400"></i>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Category 4: Narzędzia i Inne -->
+                <div class="bg-dark-card p-6 rounded-2xl border border-gray-800">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i class="fa-solid fa-screwdriver-wrench text-2xl text-accent-500"></i>
+                        <h4 class="font-bold text-white">Narzędzia & Inne</h4>
+                    </div>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li class="flex items-center justify-between bg-dark-bg p-2.5 rounded-lg border border-gray-800/80">
+                            <span>Git / GitHub</span>
+                            <i class="fa-solid fa-check text-xs text-brand-400"></i>
+                        </li>
+                        <li class="flex items-center justify-between bg-dark-bg p-2.5 rounded-lg border border-gray-800/80">
+                            <span>Visual Studio / VS Code</span>
+                            <i class="fa-solid fa-check text-xs text-brand-400"></i>
+                        </li>
+                        <li class="flex items-center justify-between bg-dark-bg p-2.5 rounded-lg border border-gray-800/80">
+                            <span>Crystal Reports / Stimulsoft</span>
+                            <i class="fa-solid fa-check text-xs text-brand-400"></i>
+                        </li>
+                        <li class="flex items-center justify-between bg-dark-bg p-2.5 rounded-lg border border-gray-800/80">
+                            <span>Postman / SSMS</span>
+                            <i class="fa-solid fa-check text-xs text-brand-400"></i>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcja: Dlaczego Ja -->
+    <section id="dlaczego-ja" class="py-20 bg-dark-bg border-t border-gray-800">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <div class="bg-gradient-to-r from-dark-card to-dark-bg border border-gray-800 rounded-3xl p-8 sm:p-12 relative overflow-hidden">
+                <div class="absolute -right-10 -top-10 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl"></div>
+                
+                <div class="max-w-3xl relative z-10">
+                    <h2 class="text-xs font-mono text-brand-400 uppercase tracking-widest mb-2">Wartość dla Zespołu</h2>
+                    <h3 class="text-3xl font-bold text-white mb-6">Dlaczego warto podjąć ze mną współpracę?</h3>
+                    
+                    <div class="space-y-4 text-gray-300 leading-relaxed">
+                        <div class="flex items-start gap-4">
+                            <div class="p-2 bg-brand-500/10 text-brand-400 rounded-lg shrink-0 mt-1">
+                                <i class="fa-solid fa-bolt"></i>
                             </div>
                             <div>
-                                <label for="email" class="block text-sm font-medium text-slate-700 mb-2">Adres e-mail</label>
-                                <input type="email" id="email" required placeholder="jan@example.com" class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent text-sm transition-all">
+                                <h4 class="font-semibold text-white">Szybka adaptacja i elastyczność</h4>
+                                <p class="text-sm text-gray-400">Posiadam mocne fundamenty w C# i inżynierii oprogramowania. Bardzo szybko odnajduję się w nowych architekturach, projektach oraz domenach biznesowych.</p>
                             </div>
                         </div>
 
-                        <div>
-                            <label for="subject" class="block text-sm font-medium text-slate-700 mb-2">Temat</label>
-                            <input type="text" id="subject" required placeholder="Współpraca / Zapytanie" class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent text-sm transition-all">
+                        <div class="flex items-start gap-4">
+                            <div class="p-2 bg-accent-500/10 text-accent-500 rounded-lg shrink-0 mt-1">
+                                <i class="fa-solid fa-bullseye"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Rozumienie potrzeb biznesu</h4>
+                                <p class="text-sm text-gray-400">Praca przy złożonych systemach nauczyła mnie patrzenia na kod przez pryzmat celu biznesowego – tworzę oprogramowanie, które ma działać sprawnie, bezawaryjnie i przynosić realną wartość.</p>
+                            </div>
                         </div>
 
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-slate-700 mb-2">Wiadomość</label>
-                            <textarea id="message" rows="4" required placeholder="Treść wiadomości..." class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent text-sm transition-all resize-none"></textarea>
+                        <div class="flex items-start gap-4">
+                            <div class="p-2 bg-brand-500/10 text-brand-400 rounded-lg shrink-0 mt-1">
+                                <i class="fa-solid fa-code-merge"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Doświadczenie z dużymi danymi i integracjami</h4>
+                                <p class="text-sm text-gray-400">Nie boję się skomplikowanych baz danych MS SQL, optymalizacji zapytań ani budowania stabilnych interfejsów komunikacyjnych API.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcja: Kontakt -->
+    <section id="kontakt" class="py-20 bg-dark-card/50 border-t border-gray-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-xs font-mono text-brand-400 uppercase tracking-widest mb-2">Kontakt</h2>
+                <h3 class="text-3xl font-bold text-white mb-4">Porozmawiajmy o współpracy</h3>
+                <p class="text-gray-400">Szukasz programisty C# / .NET do swojego zespołu lub projektu? Wyślij wiadomość!</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+                <!-- Info Side -->
+                <div class="md:col-span-5 space-y-6">
+                    <div class="bg-dark-card p-6 rounded-2xl border border-gray-800 space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-400">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400 uppercase font-mono">E-mail</p>
+                                <a href="mailto:email@example.com" id="link-email-card" class="text-sm font-semibold text-white hover:text-brand-400 transition-colors">email@example.com</a>
+                            </div>
                         </div>
 
-                        <button type="submit" class="w-full py-3.5 px-6 bg-brand-600 hover:bg-brand-700 text-white font-medium rounded-lg shadow transition-all flex justify-center items-center">
-                            Wyślij wiadomość
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-400">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400 uppercase font-mono">LinkedIn</p>
+                                <a href="#" id="link-linkedin-card" target="_blank" class="text-sm font-semibold text-white hover:text-brand-400 transition-colors">Zobacz Profil</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-400">
+                                <i class="fa-brands fa-github"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400 uppercase font-mono">GitHub</p>
+                                <a href="#" id="link-github-card" target="_blank" class="text-sm font-semibold text-white hover:text-brand-400 transition-colors">Zobacz Repozytoria</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Side -->
+                <div class="md:col-span-7">
+                    <form id="contact-form" class="bg-dark-card p-6 sm:p-8 rounded-2xl border border-gray-800 space-y-4">
+                        <div>
+                            <label class="block text-xs font-mono text-gray-400 mb-1">Twoje Imię / Firma</label>
+                            <input type="text" required class="w-full bg-dark-bg border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-500 transition-colors" placeholder="Jan Kowalski">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono text-gray-400 mb-1">Twój Adres E-mail</label>
+                            <input type="email" required class="w-full bg-dark-bg border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-500 transition-colors" placeholder="jan@example.com">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono text-gray-400 mb-1">Wiadomość</label>
+                            <textarea rows="4" required class="w-full bg-dark-bg border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-500 transition-colors" placeholder="Cześć, chcielibyśmy porozmawiać o projekcie..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3.5 rounded-xl gradient-bg text-white font-semibold hover:opacity-90 transition-all shadow-lg shadow-brand-500/20">
+                            Wyślij Wiadomość
                         </button>
                     </form>
-
-                    <!-- Powiadomienie o wysłaniu -->
-                    <div id="form-status" class="hidden mt-4 p-4 rounded-lg bg-green-50 text-green-700 text-sm font-medium text-center">
-                        Dziękuję! Wiadomość została pomyślnie wysłana.
-                    </div>
                 </div>
-
             </div>
-        </section>
-    </main>
-
-    <!-- Stopka -->
-    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800">
-        <div class="max-w-6xl mx-auto px-6 text-center text-sm">
-            <p>© 2026 Jan Kowalski. Wszystkie prawa zastrzeżone.</p>
         </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-dark-bg border-t border-gray-800/80 text-center text-xs text-gray-500 font-mono">
+        <p>&copy; 2026 Portfolio C# / .NET Developer. Wszelkie prawa zastrzeżone.</p>
     </footer>
 
-    <!-- Obsługa prostego formularza -->
+    <!-- Custom Toast Notification Box (bez alert()) -->
+    <div id="toast" class="fixed bottom-6 right-6 hidden z-50 bg-dark-card border border-brand-500 text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-brand-400 text-xl"></i>
+        <div>
+            <h5 class="font-bold text-sm">Wiadomość wysłana!</h5>
+            <p class="text-xs text-gray-400">Dziękuję za kontakt. Odpowiem najszybciej jak to możliwe.</p>
+        </div>
+    </div>
+
+    <!-- JavaScript Configuration Data & Logic -->
     <script>
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const status = document.getElementById('form-status');
-            status.classList.remove('hidden');
-            this.reset();
-            setTimeout(() => {
-                status.classList.add('hidden');
-            }, 5000);
+        // Dane konfiguracyjne użytkownika - ZMIEŃ SWOJE DANE TUTAJ
+        const PORTFOLIO_DATA = {
+            developerName: "Jan Kowalski", // Wpisz tutaj swoje Imię i Nazwisko
+            email: "twoj.email@domain.com",
+            githubUrl: "https://github.com",
+            linkedinUrl: "https://linkedin.com"
+        };
+
+        // Inicjalizacja danych na stronie
+        document.addEventListener('DOMContentLoaded', () => {
+            // Ustawienie imienia i nazwiska w kluczowych miejscach
+            const navName = document.getElementById('nav-name');
+            const heroName = document.getElementById('hero-name');
+            
+            if (PORTFOLIO_DATA.developerName) {
+                if (navName) navName.textContent = PORTFOLIO_DATA.developerName;
+                if (heroName) heroName.textContent = PORTFOLIO_DATA.developerName;
+            }
+
+            // Linki do GitHub
+            document.querySelectorAll('#link-github, #link-github-card').forEach(el => {
+                el.href = PORTFOLIO_DATA.githubUrl;
+            });
+
+            // Linki do LinkedIn
+            document.querySelectorAll('#link-linkedin, #link-linkedin-card').forEach(el => {
+                el.href = PORTFOLIO_DATA.linkedinUrl;
+            });
+
+            // Linki E-mail
+            document.querySelectorAll('#link-email-hero, #link-email-card').forEach(el => {
+                el.href = `mailto:${PORTFOLIO_DATA.email}`;
+                if (el.id === 'link-email-card') {
+                    el.textContent = PORTFOLIO_DATA.email;
+                }
+            });
+
+            // Obsługa Mobile Menu
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Obsługa Formularza Kontaktowego
+            const contactForm = document.getElementById('contact-form');
+            const toast = document.getElementById('toast');
+
+            if (contactForm && toast) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    // Pokazanie Toastu zamiast alert()
+                    toast.classList.remove('hidden');
+                    contactForm.reset();
+
+                    setTimeout(() => {
+                        toast.classList.add('hidden');
+                    }, 4000);
+                });
+            }
         });
     </script>
 </body>
